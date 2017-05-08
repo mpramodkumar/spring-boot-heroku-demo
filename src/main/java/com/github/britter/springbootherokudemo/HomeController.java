@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-@RequestMapping("/actions/teapots")
+@RequestMapping("/")
 public class HomeController {
 
     private RecordRepository repository;
@@ -60,9 +60,8 @@ public class HomeController {
         return home(model);
     }
     
-	@RequestMapping(value = "/fetch",method=RequestMethod.GET)
+	@RequestMapping(value = "/actions/teapots/fetch",method=RequestMethod.GET)
     public @ResponseBody String sayHello() {
         return "{\"name\":\"pramod\"}";
     }
 }
-
