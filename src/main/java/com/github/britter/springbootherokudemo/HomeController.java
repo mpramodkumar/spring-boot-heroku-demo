@@ -15,8 +15,9 @@
  */
 package com.github.britter.springbootherokudemo;
 
-import javax.validation.Valid;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,9 +26,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/actions/teapots")
 public class HomeController {
 
     private RecordRepository repository;
@@ -37,6 +41,7 @@ public class HomeController {
         this.repository = repository;
     }
 
+    
     @RequestMapping(method = RequestMethod.GET)
     public String home(ModelMap model) {
         List<Record> records = repository.findAll();
@@ -54,4 +59,10 @@ public class HomeController {
         }
         return home(model);
     }
+    
+	@RequestMapping(value = "/fetch",method=RequestMethod.GET)
+    public @ResponseBody String sayHello() {
+        return "{\"name\":\"pramod\"}";
+    }
 }
+
